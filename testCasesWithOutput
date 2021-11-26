@@ -1,0 +1,120 @@
+5
+X -> Y z
+X -> a
+Y -> b Z
+Y -> ' '
+Z -> ' '
+
+X => FIRST = {a, b, z}, FOLLOW = {$}
+Y => FIRST = {b, ' '}, FOLLOW = {z}
+Z => FIRST = {' '}, FOLLOW = {z}
+LL(1)? Yes
+
+------------------------------------------
+
+6
+E -> E + T
+E -> T
+T -> T * F
+T -> F
+F -> id
+F -> ( E )
+ 
+E => FIRST = {id, (}, FOLLOW = {$, +, )}
+T => FIRST = {id, (}, FOLLOW = {*}
+F => FIRST = {id, (}, FOLLOW = {*}
+LL(1)? No
+
+------------------------------------------
+
+8
+E -> T EPrime
+EPrime -> + T EPrime
+EPrime -> ' '
+T -> F TPrime
+TPrime -> * F TPrime
+TPrime -> ' '
+F -> ( E )
+F -> id
+
+E => FIRST = {id, (}, FOLLOW = {$, )}
+EPrime => FIRST = {+, ' '}, FOLLOW = {$, )}
+T => FIRST = {id, (}, FOLLOW = {+, $, )}
+TPrime => FIRST = {*, ' '}, FOLLOW = {+, $, )}
+F => FIRST = {id, (}, FOLLOW = {*, +, $, )}
+LL(1)? __
+------------------------------------------
+
+6
+A -> a A
+A -> b A
+A -> a B
+B -> b C
+C -> b D
+D -> ' '
+
+A => FIRST = {a, b}, FOLLOW = {$}
+B => FIRST = {b}, FOLLOW = {$}
+C => FIRST = {b}, FOLLOW = {$}
+D => FIRST = {' '}, FOLLOW = {$}
+LL(1)? No
+-------------------------------------------
+
+8
+bexpr -> bexpr or bterm
+bexpr -> bterm
+bterm -> bterm and bfactor
+bterm -> bfactor
+bfactor -> not bfactor
+bfactor -> ( bexpr ) 
+bfactor -> true
+bfactor -> false
+
+bexpr => FIRST = {not, (, true, false}, FOLLOW = {$, or, )}
+bterm => FIRST = {not, (, true, false}, FOLLOW = {and}
+bfactor => FIRST = {not, (, true, false}, FOLLOW = {and}
+LL(1)? No
+--------------------------------------------
+
+7
+S -> A a
+S -> b
+A -> b d APrime
+A -> APrime
+APrime -> c APrime
+APrime -> a d APrime
+APrime -> ' '
+
+S => FIRST = {b, c, a}, FOLLOW = {$}
+A => FIRST = {b, c, a, ' '}, FOLLOW = {a}
+APrime => FIRST = {c, a, ' '}, FOLLOW = {a}
+LL(1)? __
+--------------------------------------------
+
+5
+goal -> A
+A -> ( A )
+A -> two
+two -> a
+two -> b
+
+goal => FIRST = {(, a, b}, FOLLOW = {$}
+A => FIRST = {(, a, b}, FOLLOW = {$, )}
+two => FIRST = {a, b}, FOLLOW = {$, )}
+LL(1)? Yes
+--------------------------------------------
+
+6
+S -> A a
+A -> B D
+B -> b
+B -> ' '
+D -> d
+D -> ' '
+
+S => FIRST = {b, d, a}, FOLLOW = {$}
+A => FIRST = {b, d, ' '}, FOLLOW = {a}
+B => FIRST = {b, ' '}, FOLLOW = {d, a}
+D => FIRST = {d, ' '}, FOLLOW = {a}
+LL(1)? Yes
+-------------------------------------------

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head align="center">
+		<title>LL(1) Table Generator</title>
+	</head>
+	<body>
+		<h2 align="center">LL(1) Table Generator</h2>
+		<table width="728" cellspacing="2" cellpadding="0" border="0" align="center" bgcolor="#ff6600">
+			<tr bgcolor="#ffffff">
+				<th width="240" height="45">Non Terminal</th>
+				<th width="240" height="45">(</th>
+				<th width="240" height="45">)</th>
+				<th width="240" height="45">a</th>
+				<th width="240" height="45">b</th>
+				<th width="240" height="45">$</th>
+            </tr>
+			<tr bgcolor="#ffffff" align="center">
+				<td height="67"><b>goal</b></td>
+				<td height="67">goal &#8594; A</td>
+				<td height="67"></td>
+				<td height="67">goal &#8594; A</td>
+				<td height="67">goal &#8594; A</td>
+				<td height="67"></td>
+			</tr>
+			<tr bgcolor="#ffffff" align="center">
+				<td height="67"><b>A</b></td>
+				<td height="67">A &#8594; ( A )</td>
+				<td height="67"></td>
+				<td height="67">A &#8594; two</td>
+				<td height="67">A &#8594; two</td>
+				<td height="67"></td>
+			</tr>
+			<tr bgcolor="#ffffff" align="center">
+				<td height="67"><b>two</b></td>
+				<td height="67"></td>
+				<td height="67"></td>
+				<td height="67">two &#8594; a</td>
+				<td height="67">two &#8594; b</td>
+				<td height="67"></td>
+			</tr>
+		</table>
+		<div align="center">
+			<p><b>Input #1 ( a )
+ : Accepted</b> </p>
+			<p><b>Input #2 b b ( ) : Not Accepted</b> </p>
+		</div>
+	</body>
+</html>
